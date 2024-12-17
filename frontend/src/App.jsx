@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import './App.css'
-import Home from './Home'
+// src/App.jsx
+import React from 'react';
+import TodoList from './TodoList';
 
 function App() {
-
   return (
-    <>
-      <Home />
-    </>
-  )
+    <div>
+      <TodoList />
+    </div>
+  );
 }
-export default App
+
+export default App;
