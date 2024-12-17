@@ -1,21 +1,27 @@
 const express = require('express')
+const dotenv = require('dotenv')
 const mongoose = require('mongoose')
+const morgan = require('morgan')
 const cors = require('cors')
-const Todo = require('./models/Todo')
+const Todo = require('./models/TodoModels')
+
+const router  = require('./routes/router')
 
 
 const app = express()
 app.use(cors())
 app.use(express.json())
+dotenv.config()
+app.use (morgan ('dev'))
 
 
-mongoose.connect('mongodb+srv://sseeker05:9LvvkRAvIscjA6yb@cluster0.82bfk.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0&serverSelectionTimeoutMS=5000')
+
+app.use(router)
 
 
-app.get ('/get', (req, res) => {
-  TodoModel.find().then(result => res.json(result))
-  .catch(err => res.json(err))
-})
+
+
+
 
 
 
@@ -30,6 +36,10 @@ app.post('/add', (req, res) => {
 })
   
 
+mongoose.connect(process.env.MONGO_URI).then(() => {
+  console.log('Connected to MongoDB')
+}) 
+  
 
 
 app.listen(5001, () => {

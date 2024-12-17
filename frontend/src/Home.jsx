@@ -1,29 +1,22 @@
-import React, { useEffect } from 'react'
-import Create from './Create'
-import axios from 'axios'
+import React, { useState } from 'react';
+import axios from 'axios';
 
+const Create = () => {
+  const [task, setTask] = useState('');
 
-const Home = () => {
-  const [todos, setTodos] = React.useState([])
-  useEffect(() => {
-    axios.get('http://localhost:5001/')
-    .then(result => setTodos(result.data))
-    .catch(err => console.log(err))
-  })
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:5001/add', { task })
+      .then(res => console.log(res.data))
+      .catch(err => console.error(err));
+  };
+
   return (
-    <div className='home'>
-      <h2>Todo List</h2>
-      <Create />
-      {
-        todos.length === 0 ? <p>No todos yet</p> :
-        todos.map((todo) => {
-          <div className='task'>
-            {todo.task}
-          </div>
-        })
-      }
-    </div>
-  )
-}
+    <form onSubmit={handleSubmit}>
+      <input type="text" value={task} onChange={(e) => setTask(e.target.value)} />
+      <button type="submit">Add Task</button>
+    </form>
+  );
+};
 
-export default Home
+export default Create;

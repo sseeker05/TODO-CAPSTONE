@@ -13,7 +13,7 @@ const Create = () => {
   }
   return (
     <div className='create_form'>
-      <input type="text" className="" placeholder='Enter task' 
+      <input type="text" className="task" placeholder='Enter task' 
       onChange={(e) => setTask(e.target.value)} />
       <button type='button' onClick={handleAdd}>Add</button>
 
