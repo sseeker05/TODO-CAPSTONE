@@ -1,4 +1,3 @@
-// src/Todo.jsx
 import React from 'react';
 
 const Todo = ({ todo, handleToggle, handleDelete }) => {

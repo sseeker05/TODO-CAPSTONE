@@ -1,7 +1,7 @@
-// src/TodoList.jsx
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Todo from './Todo';
+import "./App.css";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -84,35 +84,55 @@ const TodoList = () => {
   };
 
   return (
-    <div>
-      {token ? (
-        <div>
-          <h1>Todo List</h1>
-          <input
-            type="text"
-            value={newTodo}
-            onChange={(e) => setNewTodo(e.target.value)}
-          />
-          <button onClick={handleCreateTodo}>Create Todo</button>
-          <ul>
-            {todos.map((todo) => (
-              <li key={todo._id}>
-                <Todo
-                  todo={todo}
-                  handleToggle={handleToggle}
-                  handleDelete={handleDelete}
-                />
-              </li>
-            ))}
-          </ul>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
-        <div>
-          <h1>Login</h1>
-          <button onClick={handleLogin}>Login</button>
-        </div>
-      )}
+    <div className="flex justify-center items-center h-screen">
+      <div className="max-w-md mx-auto p-4 mt-12 bg-white rounded-lg shadow-md">
+        {token ? (
+          <div>
+            <h1 className="text-2xl font-bold mb-4 text-center">Todo List</h1>
+            <div className="flex items-center mb-4">
+              <input
+                type="text"
+                value={newTodo}
+                onChange={(e) => setNewTodo(e.target.value)}
+                className="w-3/4 p-2 text-lg border border-gray-400 rounded-lg"
+              />
+              <button
+                onClick={handleCreateTodo}
+                className="w-1/4 p-2 text-lg font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-700"
+              >
+                Create Todo
+              </button>
+            </div>
+            <ul>
+              {todos.map((todo) => (
+                <li key={todo._id} className="flex items-center mb-2">
+                  <Todo
+                    todo={todo}
+                    handleToggle={handleToggle}
+                    handleDelete={handleDelete}
+                  />
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={handleLogout}
+              className="p-2 text-lg font-bold text-white bg-red-500 rounded-lg hover:bg-red-700"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div>
+            <h1 className="text-2xl font-bold mb-4 text-center">Login</h1>
+            <button
+              onClick={handleLogin}
+              className="p-2 text-lg font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-700"
+            >
+              Login
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
