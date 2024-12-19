@@ -1,5 +1,4 @@
 
-
 Todo App (Full Stack)
 
 A full-stack Todo app built with React.js on the frontend and Node.js/Express on the backend. This application allows users to create, read, update, and delete tasks, providing a simple and efficient way to manage daily tasks.
@@ -14,6 +13,7 @@ User Authentication: Secure routes using JWT tokens for login.
 Tech Stack
 
 Frontend
+
 React.js: A JavaScript library for building user interfaces.
 Axios: For making HTTP requests to the backend.
 Tailwind CSS: For responsive and easy styling.
@@ -27,8 +27,11 @@ Middleware
 isLoggedIn.js: Middleware to verify if the user is authenticated using JWT tokens.
 Setup Instructions
 
+
 Prerequisites
+
 Before you begin, ensure you have the following installed:
+
 
 Node.js and npm: Install Node.js
 MongoDB: If you're not using MongoDB Atlas, ensure MongoDB is set up locally.
@@ -64,6 +67,7 @@ PUT /todos/:id - Update a Todo (requires authentication).
 DELETE /todos/:id - Delete a Todo (requires authentication).
 POST /login - Login and get a JWT token.
 Contributing
+
 
 Fork the project
 Create your feature branch (git checkout -b feature/feature-name)
